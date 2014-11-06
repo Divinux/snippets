@@ -1,0 +1,262 @@
+21:42 - decc: 5YC8Z-LIB88-K7HAD
+
+23:51 - Viewtiful Joel: Ojiisan~
+23:51 - Viewtiful Joel: http://pastebin.com/t05kGUYk
+23:51 - Viewtiful Joel: Add this to a gameobject, change luaPath to the name of a lua file in your Application.dataPath.
+23:52 - Viewtiful Joel: Everything gets taken care of. functions Start, Update, FixedUpdate and OnGUI now work with that script.
+23:52 - Viewtiful Joel: Here's a small lua script i made to test that
+23:52 - Viewtiful Joel: http://pastebin.com/AvD8eB1Q
+23:53 - Viewtiful Joel: It opens a console that you can write lua into and it does stuff.
+23:53 - Viewtiful Joel: http://puu.sh/6aGUv
+
+splash->	main menu ->	Start game ->	Gamelevel
+		   ->	Load Level -> 	Leveloption ->Gamelevel
+		   ->	Options      -> 	Controller
+				   ->	Video
+		   ->	Credits  	   -> 	Credits
+		   ->	Quit Game  -> 	Exit
+
+
+
+low weight/high reps sets that is for bulk aka Sarcoplasmic hypertrophy sounds like you want Myofibrillated hypertrophy your muscle won't get as big but they will be lean and hard from heavy weight/low rep 85-90% of your one rep max.? Elliot did a video on it called "training for Boxers"
+
+
+
+17:29 - Professor Slack: class Need{
+var needName:String;
+var needPointer:float=100;
+var needMax:float=100;
+var needTriggerThreshold:float=50;
+var needDecreaseRate:float=0.5;
+var needType:int;
+}
+var needs:Need[];
+
+
+
+17:29 - Professor Slack: Oh, right.
+17:29 - Professor Slack: Right under  var needTriggerThreshold:float=50;
+17:30 - Professor Slack: var needDecreaseRate:float=0.5;
+17:30 - NB: who's Var?
+17:30 - Professor Seirius ?: cute short name for variable
+17:30 - Professor Slack: function Update(){
+for(var shoe in needs){
+shoe.needPointer-=Time.deltaTime*needDecreaseRate;
+}
+}
+17:31 - Professor Seirius ?: sure, still nothing new here
+17:31 - Professor Slack: That's pretty simple. You just make a bunch of timers that go down over time.
+17:31 - Professor Slack: The important part is needType.
+17:31 - Professor Seirius ?: ok thats what i have sans the classes
+17:31 - Professor Slack: WaypointScript.js
+17:31 - Professor Seirius ?: go on
+17:31 - Professor Slack: var waypointType:int=-1;
+17:32 - Professor Slack: -1 means it's a simple waypoint that satisfies no needs.
+17:32 - Professor Slack: Now, on the AI.
+17:32 - Professor Slack: Right below shoe.needPointer-=Time.deltaTime*needDecreaseRate;
+17:33 - Professor Slack: if(shoe.needPointer<shoe.needTriggerThreshold)
+//find closest waypoint whose type is shoe.needType.
+17:33 - Professor Slack: //go to that waypoint to satisfy need.
+17:33 - Professor Slack: You'll also need a basic need ranking thingy to not have needs overlap.
+17:34 - Professor Slack: So in the Need class, var needRank:int=0;
+17:34 - Professor Slack: and
+17:34 - Professor Slack: if(shoe.needPointer<shoe.needTriggerThreshold)
+17:34 - Professor Slack: becomes
+17:34 - Professor Slack: if(shoe.needPointer<shoe.needTriggerThreshold&&currentNeedRank<shoe.needRank)
+17:34 - Professor Slack: And right below that
+17:35 - Professor Slack: currentNeedRank=needRank;
+17:35 - Professor Slack: You'll of course have to make a new currentNeedRank variable, outside that class.
+17:35 - Professor Slack: Once the need has been satisfied, set currentNeedRank to 0.
+17:35 - Professor Slack: And there you have it, a completely modular needs system.
+17:35 - Professor Seirius ?: yep still followi-
+17:36 - Professor Seirius ?: hang on must compile in my head :V
+17:36 - Professor Slack: You can freely add and remove needs without having to hardcode them.
+17:36 - Professor Seirius ?: yeah that part was completely unnecessary :V
+17:36 - Professor Slack: Not really. It's way more helpful than you think.
+17:37 - Professor Seirius ?: you became such a fan of classes and libraries recently :V
+17:37 - Professor Seirius ?: i mean thats a good thing
+17:37 - Professor Slack: I am obsessed with making everything as modular as possible.
+17:37 - Professor Slack: Adding new things to it with little to no changes in code at all.
+17:37 - Professor Seirius ?: and yet your code inset and variable declaration is confus as fuk
+17:37 - Professor Seirius ?: of you that get better too :F
+17:38 - Professor Slack: That last sentence made no sense.
+17:38 - NB: Snake's NerdRank=10;
+17:38 - Professor Seirius ?: :I
+17:38 - Professor Seirius ?: my brain produces too much overhead.
+17:38 - Professor Seirius ?: still compiling.
+17:39 - NB: Sirius' NerdRank=10;
+17:39 - NB: :>
+17:39 - Professor Slack: NB's uselessness rank is 100.
+17:39 - Professor Seirius ?: ok im reall yjust interested in this 17:34 - Professor Slack: if(shoe.needPointer<shoe.needTriggerThreshold&&currentNeedRank<shoe.needRank)
+17:39 - Professor Seirius ?: haha /me points at nb
+17:39 - NB: i'm not useless
+17:39 - Professor Seirius ?: so youre saying... an action is triggered when
+17:40 - Professor Slack: Remind me again, what exactly are you doing with your life?
+17:40 - Professor Slack: Oh right, being silly.
+17:40 - Professor Seirius ?: a need drops below its threshold.
+17:40 - Professor Seirius ?: and also
+17:40 - Professor Slack: A need drops below it's threshold, as long as the need is more important than the current need the AI is tending to.
+17:40 - NB: i'm not silly
+17:40 - Professor Seirius ?: ooh yes.
+17:41 - Professor Seirius ?: yeah thats glorious.
+17:41 - Professor Slack: Or, more important than nothing, if the AI isn't tending to anything.
+17:41 - The Anti-Quarian hat die Verbindung getrennt.
+17:41 - Professor Seirius ?: i was just having one active action and just reviewing what action to take next once it finishes.
+17:41 - Professor Seirius ?: which is a bad thing to do.
+17:41 - The Anti-Quarian hat den Gruppenchat betreten.
+17:41 - Professor Seirius ?: /me copypastes this chet
+
+
+
+#pragma strict
+
+// These variables are for adjusting in the inspector how the object behaves
+var maxSpeed = 7.000;
+var force = 8.000;
+var jumpSpeed = 5.000;
+
+// These variables are there for use by the script and don't need to be edited
+private var state = 0;
+private var grounded = false;
+private var jumpLimit = 0;
+
+// Don't let the Physics Engine rotate this physics object so it doesn't fall over when running
+function Awake ()
+{
+	rigidbody.freezeRotation = true;
+}
+
+// This part detects whether or not the object is grounded and stores it in a variable
+function OnCollisionEnter ()
+{
+	state ++;
+	if(state > 0)
+	{
+		grounded = true;
+		//rigidbody.drag = 7;
+	}
+}
+
+
+function OnCollisionExit ()
+{
+	state --;
+	if(state < 1)
+	{
+		grounded = false;
+		state = 0;
+		//rigidbody.drag = 0;
+	}
+}
+
+// This is called every physics frame
+function FixedUpdate ()
+{
+	
+	
+	// Get the input and set variables for it
+	var jump = Input.GetButtonDown ("Jump");
+	var horizontal = Input.GetAxis("Horizontal");
+	var vertical = Input.GetAxis("Vertical");
+	
+	// Set the movement input to be the force to apply to the player every frame
+	horizontal *= force;
+	vertical *= force;
+	
+	// If the object is grounded and isn't moving at the max speed or higher apply force to move it
+	if(rigidbody.velocity.magnitude < maxSpeed && grounded == true)
+	{
+		rigidbody.AddForce (transform.rotation * Vector3.forward * vertical);
+		rigidbody.AddForce (transform.rotation * Vector3.right * horizontal);
+	}
+	
+	
+	
+	// This part is for jumping. I only let jump force be applied every 10 physics frames so
+	// the player can't somehow get a huge velocity due to multiple jumps in a very short time
+	if(jumpLimit < 10) jumpLimit ++;
+	
+	if(jump && grounded == true && jumpLimit >= 10)
+	{
+		rigidbody.velocity.y += jumpSpeed;
+		jumpLimit = 0;
+	}
+}
+
+Ancestral Totem 400g, Beast Rat 50g, Blind Rage 150, cannon automaton 200, copper automaton 75, dryadic power 175, ether pump 200, eye of eagle 75, gravelock raider 75, junkyard x2 40, overdrive 150, scattergunner 150, tick bomb 50, unleash inner power 500, vitality well x3 75
+
+
+uncom1111111111
+rares1111111111111
+
+
+
+
+15:05 - Siriyu ?: calm yourself
+15:05 - TitanSlayerZeus V.H. V.J. 99/101: You could send me one of those instead, Sei 8]
+15:05 - Datsevran #DLEG: Seems like toitaenz wants to be in japan
+15:05 - Siriyu ?: a hooker? :V
+15:06 - Siriyu ?: Japan has lots of QT(3.14) azn grills.
+15:06 - TitanSlayerZeus V.H. V.J. 99/101: They prefer the term "Entertainer"
+15:06 - Siriyu ?: Well just regular girls :v
+15:06 - Siriyu ?: Also some of them dress up in gothic lolita ;D
+15:07 - Siriyu ?: half the time it ends up crappy, but the other half they look great
+15:08 - TitanSlayerZeus V.H. V.J. 99/101: :v7
+15:10 - Datsevran #DLEG: :v8
+15:11 - Siriyu ?: It's pretty interesting here :v
+15:12 - Siriyu ?: The girls tend to do more unusual things with their looks
+15:12 - TitanSlayerZeus V.H. V.J. 99/101: Oh?
+15:12 - Siriyu ?: 50% they look great, 50% they look weird
+15:12 - TitanSlayerZeus V.H. V.J. 99/101: Pics?
+15:17 - Siriyu ?: is all subjective tbh
+15:18 - Siriyu ?: Popular is Lolita street fashion
+15:18 - Siriyu ?: Not a fan of poofy hair tbh though
+15:18 - Siriyu ?: http://www.sdcblog.com/wp-content/uploads/2012/10/lolita1.jpg
+15:18 - TitanSlayerZeus V.H. V.J. 99/101: So what if you're really picky?
+15:19 - TitanSlayerZeus V.H. V.J. 99/101: Nope, too 5-year-old. Next.
+15:22 - Siriyu ?: Hard to find photos online :<
+15:22 - Siriyu ?: There was a qt girl today
+15:22 - Siriyu ?: she had turquoise blue/green hair
+15:22 - Siriyu ?: but it matcher her outfit etc
+15:22 - Siriyu ?: so it looked nice overall ;O
+15:23 - TitanSlayerZeus V.H. V.J. 99/101: Detached sleeves?
+15:23 - Siriyu ?: http://24.media.tumblr.com/c4f0df3fc40060d27a88b630acabc818/tumblr_mneinx7X5W1sppvpjo1_500.jpg
+15:23 - Siriyu ?: Who would say no to that 8D
+15:23 - Siriyu ?: SeiLady has the one on the left :V
+15:23 - Seirius ?: nng gibgibgib
+15:23 - TitanSlayerZeus V.H. V.J. 99/101: She has that hoodie? Swish. 83
+15:24 - Siriyu ?: It's actually a Kigu
+15:24 - Siriyu ?: so a full body suit
+15:24 - Siriyu ?: but yeah
+15:24 - Siriyu ?: I guess you'd like the less out of the ordinary style
+15:24 - Siriyu ?: http://cdn.buzznet.com/assets/imgx/1/3/3/0/5/1/9/1/orig-13305191.jpg
+15:25 - Seirius ?: tfw thats the ordinary style
+15:25 - Siriyu ?: more gothic: http://media.tumblr.com/tumblr_ldqi26pfmH1qcfmph.jpg
+15:25 - Seirius ?: just give me a girl in jeans and a sweater ffd
+15:25 - Siriyu ?: :v
+15:25 - Seirius ?: ffffssss
+15:25 - TitanSlayerZeus V.H. V.J. 99/101: While, yes that is vusually appealing, I do not prefer one thing over the other.
+15:26 - Siriyu ?: for nachbar: http://bit.ly/13dTlaB
+15:27 - Seirius ?: none of those are asian >:V
+15:27 - Seirius ?: some are even black :c
+15:27 - Seirius ?: not that im racist
+15:27 - Seirius ?: my dick is
+15:27 - Siriyu ?: http://www.japantoday.com/images/size/x/2010/09/harajuku2.jpg
+15:28 - TitanSlayerZeus V.H. V.J. 99/101: But your dick is mongolian, I thought.
+15:28 - Seirius ?: why would you think that
+15:28 - Siriyu ?: http://24.media.tumblr.com/065bd25b62cb591e3be857ebaec37950/tumblr_mmfi7g2Xl71qfvrzvo1_1280.jpg
+15:28 - Siriyu ?: http://3.bp.blogspot.com/-PTZRX4FDGac/TZU85nV12GI/AAAAAAAAFQ8/Ly7sg4Dso5o/s1600/harajuku%2Btokyo%2Bfashion%2Bpins.jpg
+15:28 - Seirius ?: meh i can still see some skin behind that makeup
+15:29 - TitanSlayerZeus V.H. V.J. 99/101: I seem to remember you saying it had the great khan's beard.
+15:29 - Seirius ?: :V
+15:29 - TitanSlayerZeus V.H. V.J. 99/101: Yes, Sei, these are qt
+15:29 - Siriyu ?: :v
+15:30 - Siriyu ?: In this chat: we discuss pubes resembling beards
+15:30 - Siriyu ?: http://www.lookyourstyle.com/wp-content/uploads/2012/04/TK-2012-02-11-009-007-Harajuku-600x900.jpg
+15:30 - Siriyu ?: http://www.google.com/imgres?q=harajuku+style&start=136&um=1&sa=N&pws=0&biw=1366&bih=600&hl=en&tbm=isch&tbnid=5iELYUkUkgk3XM:&imgrefurl=http://www.fashionodor.com/harajuku-street-style/&docid=kCErakHwyA0ztM&imgurl=http://www.fashionodor.com/wp-content/uploads/2011/06/Harajuku-street-style-20-600x800.jpg&w=600&h=800&ei=VuHOUY7eG4jskgX6-4CgDg&zoom=1&ved=1t:3588,r:51,s:100,i:157&iact=rc&page=7&tbnh=207&tbnw=163&ndsp=24&tx=100&ty=110
+15:30 - Siriyu ?: http://www.fashionodor.com/wp-content/uploads/2011/06/Harajuku-street-style-20-600x800.jpg
+15:30 - Siriyu ?: That's a revision of the long link :V
+15:31 - Siriyu ?: http://fc08.deviantart.net/fs70/f/2010/192/f/9/Me_with___Harajuku_style___by_xDebmondx.jpg
+15:31 - Seirius ?: that jew nose
+15:31 - Seirius ?: nb would love all that shit
+15:31 - Seirius ?: she dresses similarly :V

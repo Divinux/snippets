@@ -1,0 +1,44 @@
+var vDist : float = 200;
+var vHitObj : Transform;
+
+var vP : GameObject;
+var vS : Component;
+
+
+//garbage vars
+var vPk : GameObject;
+var vPs :Component;
+var vN : String;
+
+var vCam : GameObject;
+
+var vMenu : int = 0;
+var hSliderValue : float = 15.0;
+
+var vMl1 : Component;
+var vMl2 : Component;
+
+function Awake()
+{
+	vP = GameObject.FindWithTag ("Player");
+	vS = vP.GetComponent(Player);
+	vCam = gameObject;
+	vMl1 = vP.GetComponent(MouseLook);
+	vMl2 = gameObject.GetComponent(MouseLook);
+	//trigger tutorial
+	vMenu = 2;
+	vMl1.enabled = false;
+	vMl2.enabled = false;
+	
+	vCam.camera.layerCullSpherical = true;
+	var distances = new float[32];
+	
+	//items
+	distances[8] = 30.0;
+	//pokemans
+	distances[10] = 100.0;
+	//plants
+	distances[11] = 50.0;
+    vCam.camera.layerCullDistances = distances;
+	
+}

@@ -1,0 +1,64 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace GUISizerns{
+
+public class GUISizer {
+
+    static float  WIDTH =848;//760;
+    static float HEIGHT =480;//381;
+
+    static List<Matrix4x4> stack = new List<Matrix4x4> ();
+
+    static public void BeginGUI(float wid,float heig) {
+        stack.Add (GUI.matrix);
+        Matrix4x4 m = new Matrix4x4 ();
+        var w = (float)Screen.width;
+        var h = (float)Screen.height;
+        var aspect = w / h;
+        var scale = 1f;
+        var offset = Vector3.zero;
+        if(aspect < (wid/heig)) { //screen is taller
+            scale = (Screen.width/wid);
+            offset.y += (Screen.height-(heig*scale))*0.5f;
+
+        } else { // screen is wider
+            scale = (Screen.height/heig);
+            offset.x += (Screen.width-(wid*scale))*0.5f;
+        }
+        m.SetTRS(offset,Quaternion.identity,Vector3.one*scale);
+        GUI.matrix *= m;
+    }
+
+    static public void EndGUI() {
+        GUI.matrix = stack[stack.Count - 1];
+        stack.RemoveAt (stack.Count - 1);
+    }
+    
+}
+}
+
+
+
+/////////////
+So basically, in whatever script you want to use it.
+20:01 - Professor Slack: at the top.
+20:01 - Professor Slack: import GUISizerns;
+20:01 - Professor Slack: And then
+20:02 - Professor Slack: GUISizer.BeginGUI(native x,native y);
+//gui code
+GUISizer.EndGUI();
+20:02 - Professor Slack: In ongui.
+20:03 - Sirius ?: WIDTH AND HEIGHT being what
+20:04 - Professor Slack: No.
+20:04 - Professor Slack: You put that in GUISizer.cs
+20:04 - Professor Slack: And then you import the namespace.
+20:04 - Professor Slack: And use it from wherever you want like i showed you.
+20:04 - Professor Slack: WIDTH and HEIGHT are the width and the height at which the GUI is ideal for.
+
+20:11 - Professor Slack: Also.
+20:11 - Professor Slack: Don't use Screen.width and Screen.height.
+20:11 - Professor Slack: Replace those with the x and y you put in the thing.
+
+

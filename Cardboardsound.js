@@ -1,0 +1,6 @@
+
+
+function OnCollisionEnter ()
+{
+	audio.Play();
+}

@@ -1,0 +1,75 @@
+Shader "Custom/BackgroundBlur" {
+	Properties {
+		_MainTex ("Base (RGB)", 2D) = "white" {}
+		_Displacement ("Displacement", 2D) = "black" {}
+		_DisplacementAmount ("Displacement", Range(0,128)) = 0
+		_FogColour("Fog Colour",Color)=(0,0,0,0)
+		_FogAmount("Fog Amount",Range(0,128))=20
+	}
+	
+	SubShader {
+		Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
+		LOD 200
+		ZWrite Off
+		GrabPass { "_ScreenThings" }
+		Name "PassName"
+		CGPROGRAM
+		#pragma target 3.0
+		#pragma surface surf SimpleSpecular
+		#include "UnityCG.cginc"
+		sampler2D _MainTex;
+		sampler2D _Displacement;
+		float _DisplacementAmount;
+		sampler2D _ScreenThings;
+		float4 _ScreenThings_TexelSize;
+		fixed4 _FogColour;
+		half _FogAmount;
+		sampler2D _CameraDepthNormalsTexture;
+		struct Input {
+			float2 uv_MainTex;
+			float2 uv_Displacement;
+			float4 screenPos;
+			float3 viewDir;
+		};
+		
+      half4 LightingSimpleSpecular (SurfaceOutput s, half3 lightDir, half3 viewDir, half atten) {
+          half3 h = normalize (lightDir + viewDir);
+
+          half diff = max (0, dot (s.Normal, lightDir));
+
+          float nh = max (0, dot (s.Normal, h));
+          float spec = pow (nh, 88.0);
+
+          half4 c;
+          c.rgb = ( _LightColor0.rgb * spec*0.5) * (atten * 2);
+          c.a = s.Alpha;
+          return c;
+      }	
+
+		
+		void surf (Input IN, inout SurfaceOutput o) {
+			half4 c = tex2D (_MainTex, IN.uv_MainTex);
+			half4 d = tex2D (_CameraDepthNormalsTexture, IN.screenPos.xy/IN.screenPos.w);
+			half2 bump=tex2D (_Displacement, IN.uv_Displacement).rg*2-1;
+			o.Normal.xy=bump;
+			o.Normal.z=sqrt(1-pow(bump.y,2)-pow(bump.x,2));
+			bump*=_DisplacementAmount;
+			
+			bump*=_ScreenThings_TexelSize.xy;
+			
+			IN.screenPos.xy+=IN.screenPos.z*bump;
+			
+			half4 col = tex2D(_ScreenThings, IN.screenPos.xy/IN.screenPos.w);
+			
+			float id;
+			id=(IN.screenPos.w*_ProjectionParams.w);
+			float deltadepth=pow(1-(DecodeFloatRG(d.zw)-id),_FogAmount);
+			
+			o.Albedo=col.rgb*c.rgb*deltadepth+_FogColour*(1-deltadepth);
+			o.Emission=col.rgb*c.rgb*deltadepth+_FogColour*(1-deltadepth);
+			o.Alpha = col.a;
+		}
+		ENDCG
+	} 
+	//FallBack "Diffuse"
+}
