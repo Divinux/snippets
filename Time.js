@@ -7,7 +7,6 @@ static var jahr: int = 2000;
 
 function Update () {
 	Uhr();
-	Screen.lockCursor = true;
 	
 }
 

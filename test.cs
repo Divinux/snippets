@@ -1,3 +1,4 @@
+//tester for the mathfx class
 using UnityEngine;
 using System.Collections;
 

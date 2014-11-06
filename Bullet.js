@@ -1,8 +1,6 @@
+//moves an object forward
 var vSpeed : int = 10;
 
-function Start () {
-	
-}
 
 function Update ()
 {
