@@ -42,7 +42,7 @@ public class Mathfx
 
 		return ((1.0f - value) * start) + (value * end);
 	}
-	//classic smoothstep
+	//classic smoothstep.returns value between 0 and 1
 	public static float SmoothStep (float x, float min, float max)
 	{
 
@@ -82,10 +82,10 @@ public class Mathfx
 		return start + (end - start) * value;
 	}
 	//Returns a value between 0 and 1 that can be used to easily make bouncing GUI items (a la OS X's Dock)
-	public static float Bounce(float x)
+	public static float Bounce(float x, float bumps)
 	{
 
-		return Mathf.Abs(Mathf.Sin(6.28f*(x+1f)*(x+1f)) * (1f-x));
+		return Mathf.Abs(Mathf.Sin(bumps*(x+1f)*(x+1f)) * (1f-x));
 	}
 	/*
      * CLerp - Circular Lerp - is like lerp but handles the wraparound from 0 to 360.
