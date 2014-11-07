@@ -1,4 +1,3 @@
-//tester for the mathfx class
 using UnityEngine;
 using System.Collections;
 
@@ -18,7 +17,7 @@ public class test : MonoBehaviour
 		if (Input.GetKeyDown("f")) 
 		{
 			z = 0;
-			StartCoroutine(lerp());
+			StartCoroutine(sin(tester,tester2));
 		}
 		if (Input.GetKeyDown("g")) 
 		{
@@ -65,7 +64,18 @@ public class test : MonoBehaviour
 		for (int i = 0; i <= steps; i++)
 			{
 				
-				x = Mathfx.Crom(from, to, i, steps, Q, T);
+				x = Mathfx.Crom(from, to, z, Q, T);
+				Instantiate(point, new Vector3(z*10,x,0),transform.rotation);
+				z += 1f/steps;
+				yield return new WaitForSeconds(0);
+			} 
+	}
+	IEnumerator sin(int amp, int sp)
+	{
+		for (int i = 0; i <= steps; i++)
+			{
+				
+				x = Mathfx.Sine(amp, sp, z);
 				Instantiate(point, new Vector3(z*10,x,0),transform.rotation);
 				z += 1f/steps;
 				yield return new WaitForSeconds(0);
