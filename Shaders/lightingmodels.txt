@@ -1,0 +1,48 @@
+//wrapped lambert
+half4 LightingWrapLambert (SurfaceOutput s, half3 lightDir, half atten) {
+        half NdotL = dot (s.Normal, lightDir);
+        half diff = NdotL * 0.5 + 0.5;
+        half4 c;
+        c.rgb = s.Albedo * _LightColor0.rgb * (diff * atten * 2);
+        c.a = s.Alpha;
+        return c;
+    }
+//ramp lighting
+inline float4 LightingBasicDiffuse (SurfaceOutput s, fixed3 
+lightDir, fixed atten)
+{
+	float difLight = max(0, dot (s.Normal, lightDir));
+	float hLambert = difLight * 0.5 + 0.5;
+	float3 ramp = tex2D(_RampTex, float2(hLambert)).rgb;
+	
+	float4 col;
+	col.rgb = s.Albedo * _LightColor0.rgb * (ramp);
+	col.a = s.Alpha;
+	return col;
+}
+//BRDF map
+inline float4 LightingBasicDiffuse (SurfaceOutput s, fixed3 lightDir, half3 viewDir, fixed atten)
+		{
+			float difLight = max(0, dot (s.Normal, lightDir));
+			float rimLight = dot(s.Normal, viewDir);
+			float hLambert = difLight * 0.5 + 0.5;
+			float3 ramp = tex2D(_RampTex, float2(hLambert, rimLight)).rgb;
+			
+			float4 col;
+			col.rgb = s.Albedo * _LightColor0.rgb * (ramp);
+			col.a = s.Alpha;
+			return col;
+		}
+//half lambert
+inline float4 LightingBasicDiffuse (SurfaceOutput s, fixed3 
+lightDir, fixed atten)
+{
+	float difLight = max(0, dot (s.Normal, lightDir));
+	float hLambert = difLight * 0.5 + 0.5;
+	
+	float4 col;
+	col.rgb = s.Albedo * _LightColor0.rgb * (hLambert * atten * 2);
+	col.a = s.Alpha;
+	return col;
+}
+//physical
