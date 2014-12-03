@@ -4,7 +4,7 @@ Shader "Custom/RimLighting"
 	{
 _DiffuseColor("_DiffuseColor", Color) = (0.4724976,1,0.00746268,1)
 _RimColor("_RimColor", Color) = (0.380597,0.380597,0.380597,1)
-_MainText("_MainText", 2D) = "black" {}
+_MainTex("Base (RGB)", 2D) = "black" {}
 _RimPower("_RimPower", Range(0.1,3) ) = 1.76
 _Glossiness("_Glossiness", Range(0.1,1) ) = 0.952
 _SpecularColor("_SpecularColor", Color) = (0.4102912,1,0.1567164,1)
@@ -37,7 +37,7 @@ Fog{
 
 float4 _DiffuseColor;
 float4 _RimColor;
-sampler2D _MainText;
+sampler2D _MainTex;
 float _RimPower;
 float _Glossiness;
 float4 _SpecularColor;
@@ -80,7 +80,7 @@ return c;
 			}
 			
 			struct Input {
-				float2 uv_MainText;
+				float2 uv_MainTex;
 float3 viewDir;
 
 			};
@@ -105,7 +105,7 @@ float4 VertexOutputMaster0_3_NoInput = float4(0,0,0,0);
 				o.Specular = 0.0;
 				o.Custom = 0.0;
 				
-float4 Tex2D0=tex2D(_MainText,(IN.uv_MainText.xyxy).xy);
+float4 Tex2D0=tex2D(_MainTex,(IN.uv_MainTex.xyxy).xy);
 float4 Multiply1=Tex2D0 * _DiffuseColor;
 float4 Fresnel0_1_NoInput = float4(0,0,1,1);
 float4 Fresnel0=(1.0 - dot( normalize( float4( IN.viewDir.x, IN.viewDir.y,IN.viewDir.z,1.0 ).xyz), normalize( Fresnel0_1_NoInput.xyz ) )).xxxx;
