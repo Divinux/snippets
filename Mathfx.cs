@@ -169,7 +169,16 @@ public class Mathfx
 	 { 
 	 return outMin + ( ( ( value - inMin ) / ( inMax - inMin ) ) * ( outMax - outMin ) ); }
 
-
+	//converts a bool into an int
+	public static int ReturnInt(bool bo)
+	{
+		if(bo){return 1;}else{return 0;}
+	}
+	//converts an int into a bool
+	public static bool ReturnBool(int inn)
+	{
+		if(inn == 1){return true;}else{return false;}
+	}
 
  
 }
