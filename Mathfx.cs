@@ -179,6 +179,16 @@ public class Mathfx
 	{
 		if(inn == 1){return true;}else{return false;}
 	}
+	//converts a string into an int
+	public static int ToInt(string inpt)
+	{
+		return int.Parse(inpt);
+	}
+	//converts an int into a string
+	public static string ToString(int inp)
+	{
+		return inp.ToString();
+	}
 
  
 }

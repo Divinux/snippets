@@ -1,5 +1,5 @@
-//wrapped lambert
-half4 LightingWrapLambert (SurfaceOutput s, half3 lightDir, half atten) {
+//wrapped lambert---
+inline half4 LightingWrapLambert (SurfaceOutput s, half3 lightDir, half atten) {
         half NdotL = dot (s.Normal, lightDir);
         half diff = NdotL * 0.5 + 0.5;
         half4 c;
@@ -7,7 +7,7 @@ half4 LightingWrapLambert (SurfaceOutput s, half3 lightDir, half atten) {
         c.a = s.Alpha;
         return c;
     }
-//ramp lighting
+//ramp lighting//todo
 inline float4 LightingBasicDiffuse (SurfaceOutput s, fixed3 
 lightDir, fixed atten)
 {
@@ -20,7 +20,7 @@ lightDir, fixed atten)
 	col.a = s.Alpha;
 	return col;
 }
-//BRDF map
+//BRDF map---
 inline float4 LightingBasicDiffuse (SurfaceOutput s, fixed3 lightDir, half3 viewDir, fixed atten)
 		{
 			float difLight = max(0, dot (s.Normal, lightDir));
@@ -33,7 +33,7 @@ inline float4 LightingBasicDiffuse (SurfaceOutput s, fixed3 lightDir, half3 view
 			col.a = s.Alpha;
 			return col;
 		}
-//half lambert
+//half lambert---
 inline float4 LightingBasicDiffuse (SurfaceOutput s, fixed3 
 lightDir, fixed atten)
 {
@@ -45,4 +45,3 @@ lightDir, fixed atten)
 	col.a = s.Alpha;
 	return col;
 }
-//physical
