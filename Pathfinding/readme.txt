@@ -1,3 +1,5 @@
+//via https://www.youtube.com/watch?v=Uwn_QFjbl1k
+
 Hi,
 
 The primary script of this package is called NodeControl, it has one function called DeepPath. this function takes two positions, a start and and end, it will give you back a list of positions that form the path.

@@ -1,7 +1,7 @@
 var radius = 1.0;
 var power = 10.0;
 
-
+//adds an explosionforce to all objects nearby
 function Start ()
 {
 	var explosionPos : Vector3 = transform.position;

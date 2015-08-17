@@ -1,3 +1,4 @@
+//Time and calendar
 static var sec : int = 0;
 static var mnt : int = 0;
 static var std : int = 0;

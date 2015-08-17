@@ -1,67 +1,36 @@
 using UnityEngine;
-
-
 using System.Collections;
-
-
-
-
-
 [RequireComponent(typeof(Rigidbody),typeof(CapsuleCollider))]
-
-
-
-
-
-public class rigidwalker : MonoBehaviour {
-	
-	
-	
-	
-	
+public class rigidwalker : MonoBehaviour 
+{	
+		
+		
 	public float walkSpeed = 2.0F;
-	
-	
+		
 	public float jumpHeight = 2.0F;
-	
-	
+		
 	public float gravity = 10.0F;
-	
-	
+		
 	public float slopeAngle = 0.85F;
-	
-	
-	
-	
-	
-	private bool onGround = false;
-	
-	
+		
+		
+		private bool onGround = false;
+		
 	private Vector3 velDesired = Vector3.zero;
-	
-	
+		
 	private Vector3 velCurrent = Vector3.zero;
-	
-	
+		
 	private Vector3 velDifference = Vector3.zero;
-	
-	
+		
 	private float velJump;
-	
-	
+		
 	private static float speed = 0.0F;
-	
-	
-	
-	
-	
-	private float collisionAngle = 0.0F;
-	
-	
-	
-	
-	
-	void Awake () {
+		
+		
+		private float collisionAngle = 0.0F;
+		
+		
+		void Awake () {
 		
 		
 		rigidbody.freezeRotation = true;
@@ -77,12 +46,9 @@ public class rigidwalker : MonoBehaviour {
 		
 		
 	}
-	
-	
-	
-	
-	
-	void FixedUpdate () {
+		
+		
+		void FixedUpdate () {
 		
 		
 		//Only move if on a solid ground
@@ -164,12 +130,9 @@ public class rigidwalker : MonoBehaviour {
 		
 		
 	}
-	
-	
-	
-	
-	
-	void OnCollisionStay (Collision collision) {
+		
+		
+		void OnCollisionStay (Collision collision) {
 		
 		
 		//onGround = true;
@@ -197,24 +160,18 @@ public class rigidwalker : MonoBehaviour {
 		
 		
 	}
-	
-	
-	
-	
-	
-	void OnCollisionExit (Collision collision) {
+		
+		
+		void OnCollisionExit (Collision collision) {
 		
 		
 		onGround = false;
 		
 		
 	}
-	
-	
-	
-	
-	
-	void OnGUI() {
+		
+		
+		void OnGUI() {
 		
 		
 		GUI.Label (new Rect(0, 0, 100, 20), onGround.ToString());
@@ -227,18 +184,14 @@ public class rigidwalker : MonoBehaviour {
 		
 		
 	}
-	
-	
-	
-	
-	
-	private int bool2Int(bool b) {
+		
+		
+		private int bool2Int(bool b) {
 		
 		
 		return b ? 1 : 0;
 		
 		
 	}
-	
-	
+		
 }

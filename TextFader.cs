@@ -1,3 +1,4 @@
+//old way to fade text in and out
 using UnityEngine;
 using System.Collections;
 using System;

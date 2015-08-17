@@ -1,4 +1,5 @@
 //thruster item
+//used for rocketjumping 
 using UnityEngine;
 using System.Collections;
 

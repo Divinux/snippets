@@ -1,7 +1,0 @@
-var aiManager:AIPool;
-var poolIndex:int;
-
-function Awake()
-{
-
-}

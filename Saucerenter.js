@@ -1,3 +1,4 @@
+//UFO enter script
 var insauc : boolean = false;
 var playercam : GameObject;
 var saucer : GameObject;

@@ -1,3 +1,5 @@
+//reads and writed text files to HD
+
 import System;
 import System.IO;
 

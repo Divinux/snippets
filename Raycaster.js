@@ -1,6 +1,7 @@
 var vDist : float = 200;
 var vHitObj : Transform;
 
+//raycast forward and send message to hit object
 function Update ()
 {
 	if(Input.GetMouseButtonDown(0))

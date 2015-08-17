@@ -7,7 +7,3 @@ function Start ()
 	//yield WaitForSeconds (1);
 	car.GetComponent(CarController).enabled = false;
 }
-
-function Update () {
-	
-}

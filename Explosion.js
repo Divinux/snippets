@@ -1,3 +1,4 @@
+//explodes an object by replacing it with a destroyed model and flinging it apart
 var explosion : GameObject;
 var nextpref : GameObject;
 var colliders : Collider[];

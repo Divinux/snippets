@@ -1,4 +1,6 @@
 //vars for the whole sheet
+//animates a sprite from a sprite sheet
+//from before unity 2d tools were released
 var colCount: int =  4;
 var rowCount: int =  4;
 

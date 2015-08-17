@@ -1,3 +1,4 @@
+//load obj file
 function ParseObjs(lns:String):Mesh[]{
 
                 var usesPositiveModel:boolean=true;

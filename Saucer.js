@@ -1,3 +1,5 @@
+//UFO control script
+
 var saucer : GameObject;
 var hoverpower : int = 100;
 var hoverheight : int = 4;

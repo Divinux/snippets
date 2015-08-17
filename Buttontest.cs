@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
+//generates new UI buttons programmatically
 public class Buttontest : MonoBehaviour 
 {
 	//instantiates a button and gives it a function

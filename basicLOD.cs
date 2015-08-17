@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections;
 
+//basic LOD system that enables and disables two sets of meshes (low and highpoly) 
+//based on distance to the player
 public class LOD : MonoBehaviour 
 {
 	//array of high poly gameobjects
 	public GameObject[] meshes;
-	//array of low poly meshes
+	//array of low poly gameobjects
 	public GameObject[] meshesLow;
 	//distance at which the LOD triggers
 	public float maxDist = 10.0f;

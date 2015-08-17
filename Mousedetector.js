@@ -1,4 +1,4 @@
-
+//old GUI mouse input detector
 
 function OnGUI() {
     var e : Event = Event.current;

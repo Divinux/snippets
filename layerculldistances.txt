@@ -1,3 +1,4 @@
+//sets culling distances of objects based on layers
 var vDist : float = 200;
 var vHitObj : Transform;
 
