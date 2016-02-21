@@ -3,7 +3,7 @@ using System.Collections;
 
 //basic LOD system that enables and disables two sets of meshes (low and highpoly) 
 //based on distance to the player
-public class LOD : MonoBehaviour 
+public class basicLOD : MonoBehaviour 
 {
 	//array of high poly gameobjects
 	public GameObject[] meshes;
@@ -20,7 +20,7 @@ public class LOD : MonoBehaviour
 	void Awake () 
 	{
 		player = GameObject.FindWithTag("Player");
-		 InvokeRepeating("LODCheck", 1F, 1F);
+		InvokeRepeating("LODCheck", 1F, 1F);
 	}
 	
 	void LODCheck() 

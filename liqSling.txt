@@ -1,0 +1,53 @@
+using UnityEngine;
+
+public class Line : MonoBehaviour
+{
+    public Transform BasePoint;
+    public float Distance;
+    public float Spring;
+    public float Damp;
+
+    private Rigidbody rb;
+
+    public void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    public void Update()
+    {
+        Vector3[] points = new Vector3[32];
+
+        float d = (BasePoint.position - transform.position).magnitude;
+
+        d = 1 - (d / Distance);
+
+        Vector3 side = Vector3.Cross(BasePoint.position - transform.position, Vector3.forward);
+
+
+        for (int i = 0; i < 32; i++)
+        {
+            float x = (float)i / 32;
+            points[i] = Vector3.Lerp(BasePoint.position, transform.position, x) + side * Mathf.Sin(x * 10) * d * 0.5f;
+        }
+
+        for (int i = 0; i < 31; i++)
+        {
+            Debug.DrawLine(points[i], points[i + 1]);
+        }
+
+        Debug.DrawLine(BasePoint.position, transform.position, Color.red);
+    }
+
+    public void FixedUpdate()
+    {
+        Vector3 delta = transform.position - BasePoint.position;
+        float off = Mathf.Clamp(delta.magnitude - Distance, 0, 0.2f);     
+        rb.AddForce(-1 * delta.normalized * off * Spring, ForceMode.Force);
+
+        if (Vector3.Dot(rb.velocity, delta) > 0)
+        {
+            rb.AddForce(-1 * delta.normalized * off * Damp, ForceMode.Force);
+        }
+    }
+}

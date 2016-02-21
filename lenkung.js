@@ -1,3 +1,4 @@
+//most basic car controller
 var leftWheel : WheelCollider;
 var rightWheel : WheelCollider;
 var maxTorque= 260.0;

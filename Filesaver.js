@@ -1,4 +1,4 @@
-//reads and writed text files to HD
+//reads and writes text files to HD
 
 import System;
 import System.IO;
@@ -14,7 +14,7 @@ function SaveFile(fileName : String)
 	}
 
 	var sr = File.CreateText(fileName);
-	sr.WriteLine ("Space Trade Thing Savegame");
+	sr.WriteLine ("Savegame");
 	sr.Close();
 }
 

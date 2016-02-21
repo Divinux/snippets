@@ -1,10 +1,6 @@
 The general formula for the jump in *experience needed* between levels was E=A(B^C), E being experience needed for this level, A the experience needed at level one, B the percentage increase you want (such as 1.2 for 20%), and C being whatever level you're at now.
 
 
-15-30 running
-60-99 idle
-110-127 attack
-
 
 
 
