@@ -1,7 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
-public class DiceRoller : MonoBehaviour 
+public class d6 : MonoBehaviour 
 {
 	public int side = 0;
 	

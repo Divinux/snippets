@@ -1,0 +1,14 @@
+https://dev.to/dogealgo/how-to-delete-remote-commits-in-git-11h0
+Assume you have pushed commits in order A1 => B2 => C3 in remote repository.
+
+Now you want to delete commits C3 and B2.
+
+The simple solution is as follows using git reset
+ git reset --hard <A1-commit-id>
+ git push -f origin <branch-name>
+However, you should avoid doing this if anyone else is working with your remote repository and has pulled your changes C3 and B2.
+
+That's where git revert comes in
+git revert --no-commit C3
+git revert --no-commit B2
+git commit -m "commit message for your reverts"
