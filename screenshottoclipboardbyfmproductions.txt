@@ -1,0 +1,10 @@
+public static Image Texture2Image(Texture2D texture)
+    {
+        byte[] bytes = ImageConversion.EncodeToPNG(texture);
+        using (var m = new MemoryStream(bytes))
+        {
+            m.Seek(0, SeekOrigin.Begin);
+            var image = Image.FromStream(m);
+            Clipboard.SetImage(image);
+        }
+    }

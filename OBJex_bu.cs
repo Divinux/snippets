@@ -31,7 +31,7 @@ public class OBJex
 		{
 			return "####Error####";
 		}
-		Material[] mats = mf.GetComponent<Renderer>().sharedMaterials;
+		Material[] mats = mf.renderer.sharedMaterials;
  
 		StringBuilder sb = new StringBuilder();
  
